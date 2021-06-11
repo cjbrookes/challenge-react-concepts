@@ -31,12 +31,22 @@ export function TaskList() {
   function handleToggleTaskCompletion(id: number) {
     // Change 'isComplete' status between 'true' and 'false' with a specific id that is received
        
+         const completeTask = tasks.map(task => task.id === id ? { 
+           ...task,
+           isComplete: !task.isComplete
+         } : task); 
 
-    
+         setTasks(completeTask)
+       
   }
 
   function handleRemoveTask(id: number) {
     // Remove a task from the list using the id
+
+    const deleteTask = tasks.filter(task => task.id !== id); //return all items apart from the one called in the function
+  
+    setTasks(deleteTask)
+  
   }
 
   return (
